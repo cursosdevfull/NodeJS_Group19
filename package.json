@@ -1,0 +1,36 @@
+{
+  "name": "nodejs_group19",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cursosdevfull/NodeJS_Group19.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cursosdevfull/NodeJS_Group19/issues"
+  },
+  "homepage": "https://github.com/cursosdevfull/NodeJS_Group19#readme",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "excel": "^1.0.1",
+    "mailgun": "^0.5.0",
+    "xlsx": "^0.18.5"
+  },
+  "engine": {
+    "node": "20.11.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7",
+    "typescript": "^5.6.3"
+  },
+  "peerDependencies": {
+    "jimp": "^1.6.0"
+  }
+}
