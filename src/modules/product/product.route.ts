@@ -14,7 +14,7 @@ class ProductRoute {
     });
   }
 
-  getRouter() {
+  public getRouter() {
     return this.router;
   }
 }

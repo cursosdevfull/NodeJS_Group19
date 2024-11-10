@@ -8,9 +8,10 @@
     "build": "npm run clean & tsc & gulp minify",
     "build:prod": "npm run clean & tsc -p tsconfig.prod.json & gulp minify",
     "format": "prettier --write src/**/*.ts",
-    "lint": "eslint -f html -o reports/lint.html",
+    "lint": "eslint",
+    "lint:report": "eslint -f html -o reports/lint.html",
     "lint:fix": "eslint --fix",
-    "start:dev": "nodemon src/index.ts"
+    "start:dev": "nodemonnp src/index.ts"
   },
   "repository": {
     "type": "git",
