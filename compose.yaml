@@ -1,0 +1,61 @@
+services:
+  server-mysql:
+    image: mysql:8
+    container_name: server-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_USER: user
+      MYSQL_PASSWORD: 12345
+      MYSQL_DATABASE: db
+    ports:
+      - '4010:3306'
+    volumes:
+      - vol-nodejs19:/var/lib/mysql
+    networks:
+      - net-nodejs19
+
+  client-mysql:
+    image: phpmyadmin/phpmyadmin
+    container_name: client-mysql
+    environment:
+      PMA_ARBITRARY: 1
+    networks:
+      - net-nodejs19
+    ports:
+      - '8088:80'
+
+  server-mongo:
+    image: mongo:8.0.3-noble
+    container_name: server-mongo
+    ports:
+      - '27017:27017'
+    networks:
+      - net-nodejs19
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 12345
+      MONGO_INITDB_DATABASE: db
+
+  client-mongo:
+    image: mongo-express
+    container_name: client-mongo
+    ports:
+      - '8081:8081'
+    networks:
+      - net-nodejs19
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: user
+      ME_CONFIG_BASICAUTH_PASSWORD: 12345
+      ME_CONFIG_MONGODB_SERVER: server-mongo
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: 12345
+
+volumes:
+  vol-nodejs19:
+    driver: local
+    name: vol-nodejs19
+
+networks:
+  net-nodejs19:
+    driver: bridge
+    name: net-nodejs19

@@ -1,14 +1,16 @@
-import http from 'http';
+import './config/environment-vars';
 
 import { app } from './app';
+import { ServerBootstrap } from './bootstrap/server.bootstrap';
 
-const server = http.createServer(app);
+const serverBootstrap = new ServerBootstrap(app);
 
-server
-  .listen(3000)
-  .on('listening', () => {
-    console.log('Server is running on port 3000');
-  })
-  .on('error', (error: NodeJS.ErrnoException) => {
-    console.log(`Error: ${error.message}`);
-  });
+try {
+  serverBootstrap.initialize();
+} catch (error: unknown) {
+  if (error instanceof Error) {
+    console.log(`Error: ${(error as Error).message}`);
+  } else {
+    console.log('An error occurred', error);
+  }
+}
