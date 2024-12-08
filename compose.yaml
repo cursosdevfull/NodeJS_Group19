@@ -50,6 +50,14 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: 12345
 
+  sonarqube:
+    image: sonarqube:10.6-community
+    container_name: sonarqube
+    ports:
+      - '9000:9000'
+      - '9092:9092'
+    networks:
+      - net-nodejs19
 volumes:
   vol-nodejs19:
     driver: local

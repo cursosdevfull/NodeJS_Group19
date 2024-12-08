@@ -1,7 +1,5 @@
 import express from 'express';
 
-import productRoutes from './modules/product/product.route';
-
 class App {
   private app: express.Application;
 
@@ -11,9 +9,7 @@ class App {
     this.mountRoutes();
   }
 
-  private mountMiddlewares() {
-    this.app.use('/product', productRoutes);
-  }
+  private mountMiddlewares() {}
 
   private mountRoutes() {
     this.app.get('/', (req, res) => {

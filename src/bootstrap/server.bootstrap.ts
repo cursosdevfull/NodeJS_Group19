@@ -2,11 +2,12 @@ import { Application } from 'express';
 import http from 'http';
 
 import { envs } from '../config/environment-vars';
+import { Bootstrap } from './bootstrap';
 
-export class ServerBootstrap {
-  constructor(private app: Application) {}
+export class ServerBootstrap implements Bootstrap {
+  constructor(private readonly app: Application) {}
 
-  initialize() {
+  initialize(): Promise<boolean> {
     return new Promise((resolve, reject) => {
       const server = http.createServer(this.app);
 

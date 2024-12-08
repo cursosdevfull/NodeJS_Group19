@@ -4,3 +4,4 @@ cache
 dist
 test-report.xml
 data
+typeorm-mysql
