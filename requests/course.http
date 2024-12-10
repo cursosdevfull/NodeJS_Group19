@@ -1,0 +1,24 @@
+post http://localhost:3000/course
+Content-Type: application/json
+
+{
+    "title": "Angular",
+    "description": "Angular is a platform and framework for building single-page client applications using HTML and TypeScript."
+}
+
+###
+get http://localhost:3000/course
+
+###
+get http://localhost:3000/course/2
+
+###
+put http://localhost:3000/course/2
+Content-Type: application/json
+
+{
+    "title": "Angular19"
+}
+
+###
+get http://localhost:3000/course/page/?page=2&pageSize=1

@@ -1,7 +1,9 @@
 import express from 'express';
 
+import { courseRouter } from './modules/course/presentation/course.routes';
+
 class App {
-  private app: express.Application;
+  private readonly app: express.Application;
 
   constructor() {
     this.app = express();
@@ -9,12 +11,16 @@ class App {
     this.mountRoutes();
   }
 
-  private mountMiddlewares() {}
+  private mountMiddlewares() {
+    this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: true }));
+  }
 
   private mountRoutes() {
     this.app.get('/', (req, res) => {
       res.send('¡Bienvenidos a Cursos Dev!');
     });
+    this.app.use('/course', courseRouter);
   }
 
   getApp() {

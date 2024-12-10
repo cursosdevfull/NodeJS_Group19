@@ -1,26 +1,31 @@
+import { BaseDtoImpl } from '../../../core/dtos/base.dto';
 import { UserEntity } from '../entities/user.entity';
 import { User } from '../models/user';
 
-export class UserDto {
-  static fromDomainToData(user: User): UserEntity {
+export class UserDto extends BaseDtoImpl<UserEntity, User> {
+  static fromDomainToData(model: User | User[]): UserEntity | UserEntity[] {
+    if (Array.isArray(model)) {
+      return model.map((item) => this.fromDomainToData(item)) as UserEntity[];
+    }
+
     const userEntity = new UserEntity();
-    userEntity.userId = user.userId;
-    userEntity.firstname = user.firstname;
-    userEntity.lastname = user.lastname;
-    userEntity.email = user.email;
-    userEntity.password = user.password;
-    userEntity.active = user.active;
+    userEntity.id = model.userId;
+    userEntity.firstname = model.firstname;
+    userEntity.lastname = model.lastname;
+    userEntity.email = model.email;
+    userEntity.password = model.password;
+    userEntity.active = model.active;
 
     return userEntity;
   }
 
   static fromDataToDomain(data: UserEntity | UserEntity[]): User | User[] {
     if (Array.isArray(data)) {
-      return data.map((item) => this.fromDataToDomain(item)) as UserEntity[];
+      return data.map((item) => this.fromDataToDomain(item)) as User[];
     }
 
     return {
-      userId: data.userId,
+      userId: data.id,
       firstname: data.firstname,
       lastname: data.lastname,
       email: data.email,

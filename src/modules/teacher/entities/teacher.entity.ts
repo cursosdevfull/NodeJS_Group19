@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({ name: 'user' })
-export class UserEntity {
+@Entity({ name: 'teacher' })
+export class TeacherEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
@@ -11,11 +11,17 @@ export class UserEntity {
   @Column({ type: 'varchar', length: 100 })
   lastname!: string;
 
+  @Column({ type: 'int' })
+  age!: number;
+
+  @Column({ type: 'varchar', length: 1 })
+  gender!: string;
+
   @Column({ type: 'varchar', length: 100 })
   email!: string;
 
-  @Column({ type: 'varchar', length: 100 })
-  password!: string;
+  @Column({ type: 'varchar', length: 255 })
+  urlProfile!: string;
 
   @Column({ type: 'boolean', default: true })
   active!: boolean;

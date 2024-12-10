@@ -2,6 +2,7 @@ import { DataSource } from 'typeorm';
 
 import { envs } from '../config/environment-vars';
 import { CourseEntity } from '../modules/course/entities/course.entity';
+import { TeacherEntity } from '../modules/teacher/entities/teacher.entity';
 import { UserEntity } from '../modules/user/entities/user.entity';
 import { Bootstrap } from './bootstrap';
 
@@ -13,7 +14,7 @@ export class DatabaseBootstrap implements Bootstrap {
     const appDatSource = new DataSource({
       type: 'mysql',
       ...dbConfig,
-      entities: [UserEntity, CourseEntity],
+      entities: [UserEntity, CourseEntity, TeacherEntity],
     });
 
     DatabaseBootstrap.appDataSource = appDatSource;
