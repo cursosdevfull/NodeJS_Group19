@@ -1,10 +1,16 @@
 import { BaseApplication } from '../../../core/application/base.application';
 import { User } from '../models/user';
 import { UserPort } from '../ports/user.port';
+import { UserResponse, UserResponseDto } from './dtos/user-response.dto';
 
-export class UserApplication extends BaseApplication<User, UserPort> {
+export class UserApplication extends BaseApplication<
+  User,
+  UserPort,
+  UserResponse,
+  UserResponseDto
+> {
   constructor(private readonly userPort: UserPort) {
-    super(userPort);
+    super(userPort, new UserResponseDto());
   }
 
   async findByEmail(email: string): Promise<User | null> {

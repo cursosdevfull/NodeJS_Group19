@@ -1,6 +1,8 @@
-import 'dotenv/config';
-
+//import 'dotenv/config';
+import * as dotenv from 'dotenv';
 import * as joi from 'joi';
+
+dotenv.config({ path: 'variable.env' });
 
 type EnvironmentVariables = {
   PORT: number;
@@ -11,6 +13,13 @@ type EnvironmentVariables = {
   DB_NAME: string;
   DB_LOGG: boolean;
   DB_SYNC: boolean;
+  ACCESS_TOKEN_SECRET: string;
+  ACCESS_TOKEN_EXPIRES_IN: string;
+  REDIS_HOST: string;
+  REDIS_PORT: number;
+  REDIS_PASSWORD: string;
+  REDIS_MAX_RETRIES_PER_REQUEST: number;
+  REDIS_EXPIRES_IN: number;
 };
 
 type ValidationEnvironmentVariables = {
@@ -30,6 +39,13 @@ function validateEnvironmentVariables(vars: Record<string, any>) {
       DB_NAME: joi.string().required(),
       DB_LOGG: joi.boolean().required(),
       DB_SYNC: joi.boolean().required(),
+      ACCESS_TOKEN_SECRET: joi.string().required(),
+      ACCESS_TOKEN_EXPIRES_IN: joi.string().required(),
+      REDIS_HOST: joi.string().required(),
+      REDIS_PORT: joi.number().integer().required(),
+      REDIS_PASSWORD: joi.string().required(),
+      REDIS_MAX_RETRIES_PER_REQUEST: joi.number().integer().required(),
+      REDIS_EXPIRES_IN: joi.number().integer().required(),
     })
     .unknown(true);
 
@@ -59,6 +75,15 @@ function loadEnvironmentVariables() {
       synchronize: value.DB_SYNC,
       entities: ['src/modules/**/entities/*.entity.{ts,js}'],
     },
+    redis: {
+      host: value.REDIS_HOST,
+      port: value.REDIS_PORT,
+      password: value.REDIS_PASSWORD,
+      maxRetriesPerRequest: value.REDIS_MAX_RETRIES_PER_REQUEST,
+    },
+    redisExpiresIn: value.REDIS_EXPIRES_IN,
+    accessTokenSecret: value.ACCESS_TOKEN_SECRET,
+    accessTokenExpiresIn: value.ACCESS_TOKEN_EXPIRES_IN,
   };
 }
 

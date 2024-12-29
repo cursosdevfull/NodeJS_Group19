@@ -1,5 +1,10 @@
 module.exports = {
   testEnvironment: 'node',
+  moduleNameMapper: {
+    '^src/(.*)$': '<rootDir>/src/$1',
+  },
+  moduleDirectories: ['node_modules', 'src'],
+  roots: ['<rootDir>/src/', '<rootDir>/test/'],
   bail: true,
   verbose: true,
   setupFilesAfterEnv: ['jest-extended'],

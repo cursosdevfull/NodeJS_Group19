@@ -1,4 +1,4 @@
-post http://localhost:3000/course
+post http://localhost:3000/v1/course
 Content-Type: application/json
 
 {
@@ -7,13 +7,13 @@ Content-Type: application/json
 }
 
 ###
-get http://localhost:3000/course
+get http://localhost:3000/v1/course
 
 ###
-get http://localhost:3000/course/2
+get http://localhost:3000/v1/course/2
 
 ###
-put http://localhost:3000/course/2
+put http://localhost:3000/v1/course/2
 Content-Type: application/json
 
 {
@@ -21,4 +21,4 @@ Content-Type: application/json
 }
 
 ###
-get http://localhost:3000/course/page/?page=2&pageSize=1
+get http://localhost:3000/v1/course/page/?page=2&pageSize=1

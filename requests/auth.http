@@ -1,0 +1,8 @@
+post http://localhost:3000/v1/auth
+Content-Type: application/json
+
+{
+  "email": "hector.barrionuevo@email.com",
+  "password": "Elgigante2025"
+}
+

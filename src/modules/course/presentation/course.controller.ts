@@ -15,7 +15,7 @@ export class CourseController {
     const { courseId } = request.params;
     const { title, description, active } = request.body;
     await this.application.save({
-      courseId: +courseId,
+      id: +courseId,
       title,
       description,
       active,

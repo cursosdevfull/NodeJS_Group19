@@ -1,0 +1,31 @@
+post http://localhost:3000/v1/user
+Content-Type: application/json
+
+{
+  "firstname": "Hector",
+  "lastname": "Barrionuevo",
+  "email": "hector.barrionuevo@email.com",
+  "password": "Elgigante2025",
+  "roles": [{"id": 1}, {"id": 2}]
+}
+
+###
+get http://localhost:3000/v1/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJIZWN0b3IiLCJsYXN0bmFtZSI6IkJhcnJpb251ZXZvIiwicm9sZXMiOlt7ImlkIjoxLCJuYW1lIjoiQURNSU4ifSx7ImlkIjoyLCJuYW1lIjoiT1BFUkFUT1IifV0sImlhdCI6MTczNTQ4MTI5MSwiZXhwIjoxNzM1NDgzMDkxfQ.thKD37Zpz_69jzKu7hf4rZfv47lrASya4I5pEUNm3qg
+
+###
+get http://localhost:3000/v1/user/8
+
+###
+put http://localhost:3000/v1/user/0
+Content-Type: application/json
+
+{
+    "email": "prueba@email.com"
+}
+
+###
+get http://localhost:3000/v1/user/page/?page=1&pageSize=2
+
+###
+delete http://localhost:3000/user/2

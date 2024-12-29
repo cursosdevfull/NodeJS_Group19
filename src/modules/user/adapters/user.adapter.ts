@@ -6,11 +6,11 @@ import { User } from '../models/user';
 import { UserPort } from '../ports/user.port';
 
 export class UserAdapter
-  extends BaseAdapter<UserEntity, User, typeof UserDto>
+  extends BaseAdapter<UserEntity, User, UserDto>
   implements UserPort
 {
   constructor() {
-    super(UserEntity, UserDto);
+    super(UserEntity, new UserDto());
   }
 
   async findByEmail(email: string): Promise<User | null> {
@@ -18,9 +18,10 @@ export class UserAdapter
 
     const userEntityFound = await repository.findOne({
       where: { email, active: true },
+      relations: ['roles'],
     });
     if (userEntityFound) {
-      return UserDto.fromDataToDomain(userEntityFound) as User;
+      return new UserDto().fromDataToDomain(userEntityFound) as User;
     }
 
     return null;
@@ -36,7 +37,7 @@ export class UserAdapter
       where: { email, password, active: true },
     });
     if (userEntityFound) {
-      return UserDto.fromDataToDomain(userEntityFound) as User;
+      return new UserDto().fromDataToDomain(userEntityFound) as User;
     }
 
     return null;

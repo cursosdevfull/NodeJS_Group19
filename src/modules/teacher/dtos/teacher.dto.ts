@@ -3,44 +3,17 @@ import { TeacherEntity } from '../entities/teacher.entity';
 import { Teacher } from '../models/teacher';
 
 export class TeacherDto extends BaseDtoImpl<TeacherEntity, Teacher> {
-  static fromDomainToData(
-    model: Teacher | Teacher[],
-  ): TeacherEntity | TeacherEntity[] {
-    if (Array.isArray(model)) {
-      return model.map((item) =>
-        this.fromDomainToData(item),
-      ) as TeacherEntity[];
-    }
-
-    const teacherEntity = new TeacherEntity();
-    teacherEntity.id = model.teacherId;
-    teacherEntity.firstname = model.firstname;
-    teacherEntity.lastname = model.lastname;
-    teacherEntity.age = model.age;
-    teacherEntity.gender = model.gender;
-    teacherEntity.email = model.email;
-    teacherEntity.urlProfile = model.urlProfile;
-    teacherEntity.active = model.active;
-
-    return teacherEntity;
+  constructor() {
+    super(TeacherEntity);
   }
 
-  static fromDataToDomain(
-    data: TeacherEntity | TeacherEntity[],
-  ): Teacher | Teacher[] {
-    if (Array.isArray(data)) {
-      return data.map((item) => this.fromDataToDomain(item)) as Teacher[];
-    }
+  fromDomainToData(
+    model: Teacher | Teacher[],
+  ): TeacherEntity | TeacherEntity[] {
+    return super.fromDomainToData(model);
+  }
 
-    return {
-      teacherId: data.id,
-      firstname: data.firstname,
-      lastname: data.lastname,
-      age: data.age,
-      gender: data.gender,
-      email: data.email,
-      urlProfile: data.urlProfile,
-      active: data.active,
-    };
+  fromDataToDomain(data: TeacherEntity | TeacherEntity[]): Teacher | Teacher[] {
+    return super.fromDataToDomain(data);
   }
 }

@@ -5,10 +5,10 @@ import { Teacher } from '../models/teacher';
 import { TeacherPort } from '../ports/teacher.port';
 
 export class TeacherAdapter
-  extends BaseAdapter<TeacherEntity, Teacher, typeof TeacherDto>
+  extends BaseAdapter<TeacherEntity, Teacher, TeacherDto>
   implements TeacherPort
 {
   constructor() {
-    super(TeacherEntity, TeacherDto);
+    super(TeacherEntity, new TeacherDto());
   }
 }

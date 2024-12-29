@@ -24,6 +24,27 @@ services:
     ports:
       - '8088:80'
 
+  redis-server:
+    image: redis:6.0.5-alpine
+    container_name: redis-server
+    ports:
+      - '6380:6379'
+    command: redis-server --requirepass 12345
+    networks:
+      - net-nodejs19
+
+  redis-client:
+    image: rediscommander/redis-commander:latest
+    container_name: redis-client
+    ports:
+      - '8081:8081'
+    environment:
+      REDIS_HOST: redis-server
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: 12345
+    networks:
+      - net-nodejs19
+
   server-mongo:
     image: mongo:8.0.3-noble
     container_name: server-mongo

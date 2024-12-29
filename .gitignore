@@ -1,7 +1,7 @@
+data
 node_modules
 reports
 cache
 dist
 test-report.xml
-data
 typeorm-mysql

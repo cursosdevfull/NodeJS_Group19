@@ -1,0 +1,8 @@
+cache
+dist
+node_modules
+reports
+requests
+typeorm-mysql
+test-report.xml
+data

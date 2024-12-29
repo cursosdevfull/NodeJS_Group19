@@ -1,0 +1,23 @@
+post http://localhost:3000/v1/role
+Content-Type: application/json
+
+{
+    "name": "OPERATOR"
+}
+
+###
+get http://localhost:3000/v1/role
+
+###
+get http://localhost:3000/v1/role/1
+
+###
+put http://localhost:3000/v1/role/1
+Content-Type: application/json
+
+{
+    "name": "ADMIN"
+}
+
+###
+get http://localhost:3000/v1/role/page/?page=1&pageSize=1

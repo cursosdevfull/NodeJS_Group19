@@ -5,10 +5,10 @@ import { Course } from '../models/course';
 import { CoursePort } from '../ports/course.port';
 
 export class CourseAdapter
-  extends BaseAdapter<CourseEntity, Course, typeof CourseDto>
+  extends BaseAdapter<CourseEntity, Course, CourseDto>
   implements CoursePort
 {
   constructor() {
-    super(CourseEntity, CourseDto);
+    super(CourseEntity, new CourseDto());
   }
 }
