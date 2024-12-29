@@ -33,6 +33,13 @@ class App {
 
     //this.app.use(cors());
     this.app.use(helmet());
+    this.app.use((req: Request, res: Response, next: NextFunction) => {
+      res.setHeader(
+        'Permissions-Policy',
+        'geolocation=(self "https://example.com"), microphone=()',
+      );
+      next();
+    });
     this.app.use(
       rateLimit({
         windowMs: 5 * 60 * 1000,

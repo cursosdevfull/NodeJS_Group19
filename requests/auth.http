@@ -1,4 +1,4 @@
-post http://localhost:3000/v1/auth
+post http://development.eba-f6egwrna.us-east-1.elasticbeanstalk.com/v1/auth
 Content-Type: application/json
 
 {

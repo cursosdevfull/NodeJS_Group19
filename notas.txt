@@ -1,0 +1,4 @@
+AWSCodePipelineServiceRole-us-east-1-CursoNodeJS19
+
+codebuild-CursoNodeJS19Build-service-role
+
