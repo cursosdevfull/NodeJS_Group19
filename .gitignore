@@ -3,3 +3,4 @@ cache
 dist
 reports
 data
+typeorm-mysql
