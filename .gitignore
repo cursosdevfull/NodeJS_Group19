@@ -5,3 +5,4 @@ cache
 dist
 test-report.xml
 typeorm-mysql
+variable.env

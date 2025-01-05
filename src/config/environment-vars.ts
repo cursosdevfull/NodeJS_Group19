@@ -1,6 +1,7 @@
-//import 'dotenv/config';
 import * as dotenv from 'dotenv';
 import * as joi from 'joi';
+
+//import 'dotenv/config';
 
 dotenv.config({ path: 'variable.env' });
 

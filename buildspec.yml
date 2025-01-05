@@ -11,6 +11,7 @@ phases:
     commands:
       - echo Build started at `date`
       - echo Building the docker image
+      - aws s3 cp s3://cursonodejs19/$ENVIRONMENT/variable.env variable.env
       - docker build -t curso19 .
       - docker tag curso19 282865065290.dkr.ecr.us-east-1.amazonaws.com/curso19
   post_build:
